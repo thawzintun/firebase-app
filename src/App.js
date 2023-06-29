@@ -8,10 +8,6 @@ function App() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
-    useEffect(() => {
-        getNotes();
-    }, []);
-
     const getNotes = async () => {
         setLoading(true);
         setError();
@@ -23,12 +19,15 @@ function App() {
             if (!response.ok) {
                 throw new Error("Cannot connect to the firebase");
             }
-            const notes = await response.json();
+            const data = await response.json();
 
             const modifiedNote = [];
 
-            for (const key in notes) {
-                modifiedNote.push(notes[key]);
+            for (const key in data) {
+                modifiedNote.push({
+                    id: key,
+                    note: data[key],
+                });
             }
 
             setNotes(modifiedNote);
@@ -36,17 +35,25 @@ function App() {
             setError(err.message);
         }
         setLoading(false);
-        console.log(loading, error);
     };
+
+    useEffect(() => {
+        getNotes();
+    }, []);
+
     return (
         <>
-            <NavBar getNotes={getNotes} />
-            <AddNote getNotes={getNotes} />
+            <NavBar totalNotes={notes.length} />
             {loading && !error && <h1 className="message">Getting Notes...</h1>}
             {error && !loading && <p className="message error">{error}</p>}
-            {!loading &&
-                !error &&
-                notes.map((note, index) => <Note key={index} note={note} />)}
+            {!loading && !error && (
+                <>
+                    <AddNote getNotes={getNotes} />
+                    {notes.map((note) => (
+                        <Note key={note.id} note={note} getNotes={getNotes} />
+                    ))}
+                </>
+            )}
         </>
     );
 }

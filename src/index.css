@@ -15,6 +15,7 @@ code {
 .card {
     background-color: cornflowerblue;
     padding: 20px;
+    margin: 0 10px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -22,7 +23,7 @@ code {
 }
 .card-ctr {
     padding: 4px 20px;
-    margin-top: 20px;
+    margin: 20px 10px 0 10px;
     color: #fff;
 }
 
@@ -40,7 +41,7 @@ input {
     background-color: #fff;
     color: cornflowerblue;
     border: none;
-    padding: 10px 6px;
+    padding: 10px 8px;
     border-radius: 12px;
     font-size: 17px;
     font-weight: 600;
@@ -56,11 +57,13 @@ input {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin: 0 10px;
 }
 
-.nav button {
+.nav p {
     background-color: cornflowerblue;
     color: #fff;
+    cursor: default;
 }
 
 .message {
@@ -74,4 +77,8 @@ input {
 
 .error {
     color: red;
+}
+
+svg {
+    cursor: pointer;
 }

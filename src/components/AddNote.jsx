@@ -32,8 +32,11 @@ const AddNote = ({ getNotes }) => {
                     placeholder="Add Note Here"
                     value={note}
                     onChange={(e) => setNote(e.target.value)}
+                    autoFocus
                 />
-                <button className="submit-btn">Add Note</button>
+                <button className="submit-btn" hidden={note ? false : true}>
+                    Add Note
+                </button>
             </form>
         </section>
     );

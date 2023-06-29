@@ -1,12 +1,12 @@
 import React from "react";
 
-const NavBar = ({ getNotes }) => {
+const NavBar = ({ totalNotes }) => {
     return (
         <section className="nav">
             <h1 className="logo">FireNote</h1>
-            <button className="submit-btn" onClick={getNotes}>
-                Refresh Note
-            </button>
+            {totalNotes > 0 && (
+                <p className="submit-btn">Total Notes - {totalNotes}</p>
+            )}
         </section>
     );
 };
