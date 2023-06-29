@@ -3,6 +3,7 @@ import AddNote from "./components/AddNote";
 import NavBar from "./components/NavBar";
 
 import Note from "./components/Note";
+import Intro from "./components/Intro";
 function App() {
     const [notes, setNotes] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -49,9 +50,15 @@ function App() {
             {!loading && !error && (
                 <>
                     <AddNote getNotes={getNotes} />
-                    {notes.map((note) => (
-                        <Note key={note.id} note={note} getNotes={getNotes} />
-                    ))}
+                    {notes &&
+                        notes.map((note) => (
+                            <Note
+                                key={note.id}
+                                note={note}
+                                getNotes={getNotes}
+                            />
+                        ))}
+                    {notes.length === 0 && <Intro />}
                 </>
             )}
         </>

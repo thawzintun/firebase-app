@@ -82,3 +82,10 @@ input {
 svg {
     cursor: pointer;
 }
+
+.intro,
+.intro h1 {
+    padding: 0 10px;
+    text-align: center;
+    color: cornflowerblue;
+}
