@@ -34,7 +34,10 @@ const AddNote = ({ getNotes }) => {
                     onChange={(e) => setNote(e.target.value)}
                     autoFocus
                 />
-                <button className="submit-btn" hidden={note ? false : true}>
+                <button
+                    className="submit-btn"
+                    hidden={note.trim() !== 0 ? false : true}
+                >
                     Add Note
                 </button>
             </form>
